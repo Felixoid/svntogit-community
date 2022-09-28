@@ -8,8 +8,14 @@
 # We don't want to complete 'poetry/__main__.py'....
 
 import sys
-from poetry.console import main
+from poetry.console.application import Application
 
-sys.argv = ['poetry', 'completions', sys.argv.pop()]
+sys.argv = [
+    "poetry",
+    "completions",
+    "--alias=/usr/bin/poetry",
+    "--alias=poetry",
+    sys.argv.pop(),
+]
 
-main()
+Application().run()
